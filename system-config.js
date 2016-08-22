@@ -26,13 +26,12 @@ var barrels = [
     // Thirdparty barrels.
     'rxjs',
     // App specific barrels.
-    'app',
-    'app/shared',
-    'app/hijojo',
+    'app'
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {
-    cliSystemConfigPackages[barrelName] = { main: 'index' };
+    var main = barrelName === 'rxjs' ? 'Rx' : 'index';
+    cliSystemConfigPackages[barrelName] = { main: main };
 });
 // Apply the CLI SystemJS configuration.
 System.config({
