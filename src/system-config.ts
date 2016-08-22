@@ -8,10 +8,17 @@
  * User Configuration.
  **********************************************************************************************/
 /** Map relative paths to URLs. */
-const map: any = {};
+const map: any = {
+    'rxjs': 'vendor/rxjs',
+    'd3': 'vendor/d3/build'
+};
+
 
 /** User packages configuration. */
-const packages: any = {};
+const packages: any = {
+    'rxjs': { main: 'Rx' },
+    'd3': { main: 'd3' }
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
@@ -28,9 +35,6 @@ const barrels: string[] = [
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
 
-    // Thirdparty barrels.
-    'rxjs',
-
     // App specific barrels.
     'app'
     /** @cli-barrel */
@@ -38,8 +42,7 @@ const barrels: string[] = [
 
 const cliSystemConfigPackages: any = {};
 barrels.forEach((barrelName: string) => {
-    let main: string = barrelName === 'rxjs' ? 'Rx' : 'index';
-    cliSystemConfigPackages[barrelName] = { main: main };
+    cliSystemConfigPackages[barrelName] = { main: 'index' };
 });
 
 /** Type declaration for ambient System. */
