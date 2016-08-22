@@ -1,8 +1,13 @@
-import { GithubNumberType } from '../models/GithubNumberType';
-export class DataService {
-  getContributors():GithubNumberType {
-    return GithubNumberType.CONTRIBUTORS;
-  }
+import { GithubRepo } from '../models/GithubRepo';
 
-  get
+export class DataService {
+    private githubRepo: GithubRepo = new GithubRepo();
+
+    public getGithubRepo(): GithubRepo {
+        return this.githubRepo;
+    }
+
+    public setGithubRepo(value: GithubRepo) {
+        this.githubRepo = value;
+    }
 }

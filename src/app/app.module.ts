@@ -4,18 +4,25 @@ import { AppComponent } from './components/app.component';
 import { NumberTileComponent } from './components/tiles/numberTile/number.tile.component';
 import { GithubService } from './services/github.service';
 import { TilesComponent } from './components/tiles/tiles.component';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { DataService } from './services/data.service';
 
 @NgModule({
-  imports: [BrowserModule],
-  declarations: [
-    AppComponent,
-    TilesComponent,
-    NumberTileComponent
-  ],
-  providers: [
-    GithubService
-  ],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        HttpModule,
+        JsonpModule
+    ],
+    declarations: [
+        AppComponent,
+        TilesComponent,
+        NumberTileComponent
+    ],
+    providers: [
+        GithubService,
+        DataService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

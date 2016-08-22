@@ -1,21 +1,30 @@
 import { Component, Input } from '@angular/core';
 import { GithubService } from '../../../services/github.service';
 import { GithubNumberData } from '../../../models/GithubTileData';
+import { GithubRepo } from '../../../models/GithubRepo';
+import { OnInit } from '@angular/core';
+import { DataService } from '../../../services/data.service';
+import { TilesService } from '../tiles.service';
 
 @Component({
-  moduleId: module.id,
-  selector: 'cs-number-tile',
-  templateUrl: 'number.tile.component.html'
+    moduleId: module.id,
+    selector: 'cs-number-tile',
+    templateUrl: 'number.tile.component.html'
 })
 export class NumberTileComponent {
-  @Input() data: GithubNumberData;
-  number: number;
+    @Input() data: GithubNumberData;
+    number: number;
+    repo: GithubRepo = new GithubRepo();
 
-  constructor(private githubService: GithubService) {
-    this.number = 0;
-  }
+    constructor(private tilesService:TilesService) {
+        this.number = 0;
+    }
 
-  getNumber():number {
-    return this.githubService.getNumber(this.data.type);
-  }
+    getNumber(): number {
+        return 1;
+    }
+
+    getRepo():GithubRepo {
+        return this.tilesService.getGithubRepository();
+    }
 }
