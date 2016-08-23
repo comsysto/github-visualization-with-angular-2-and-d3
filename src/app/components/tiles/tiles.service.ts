@@ -44,11 +44,11 @@ export class TilesService {
     getNumberData(type:GithubNumberType): GithubNumberData {
         switch (type) {
             case GithubNumberType.WATCHERS:
-                return new GithubNumberData('Watchers', type, this.dataService.getWatchersCount());
+                return new GithubNumberData('Watchers', type, this.dataService.getWatchersCount(), 'people');
             case GithubNumberType.STAR_GAZERS:
-                return new GithubNumberData('Star Gazers', type, this.dataService.getStarGazersCount());
+                return new GithubNumberData('Star Gazers', type, this.dataService.getStarGazersCount(), 'star');
             case GithubNumberType.FORKS:
-                return new GithubNumberData('Forks', type, this.dataService.getForksCount());
+                return new GithubNumberData('Forks', type, this.dataService.getForksCount(), 'share');
         }
     }
 

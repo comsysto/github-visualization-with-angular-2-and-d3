@@ -1,2 +1,3 @@
+<i class="material-icons">{{ data.icon }}</i>
 <h3 class="tile-title">{{ data.title }}</h3>
-<div class="tile-number">{{ data.number }}</div>
+<div class="tile-number">{{ data.number | number:'.0-5' }}</div>
