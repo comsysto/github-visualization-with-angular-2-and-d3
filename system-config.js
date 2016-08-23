@@ -6,9 +6,15 @@
  * User Configuration.
  **********************************************************************************************/
 /** Map relative paths to URLs. */
-var map = {};
+var map = {
+    'rxjs': 'vendor/rxjs',
+    'd3': 'vendor/d3/build/d3.js'
+};
 /** User packages configuration. */
-var packages = {};
+var packages = {
+    'rxjs': { main: 'Rx' },
+    'd3': { format: 'cjs' }
+};
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
@@ -23,15 +29,12 @@ var barrels = [
     '@angular/router',
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
-    // Thirdparty barrels.
-    'rxjs',
     // App specific barrels.
     'app'
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {
-    var main = barrelName === 'rxjs' ? 'Rx' : 'index';
-    cliSystemConfigPackages[barrelName] = { main: main };
+    cliSystemConfigPackages[barrelName] = { main: 'index' };
 });
 // Apply the CLI SystemJS configuration.
 System.config({
