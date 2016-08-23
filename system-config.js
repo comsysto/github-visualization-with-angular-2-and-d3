@@ -8,12 +8,14 @@
 /** Map relative paths to URLs. */
 var map = {
     'rxjs': 'vendor/rxjs',
-    'd3': 'vendor/d3/build/d3.js'
+    'd3': 'vendor/d3/build/d3.js',
+    'moment': 'vendor/moment/moment.js'
 };
 /** User packages configuration. */
 var packages = {
     'rxjs': { main: 'Rx' },
-    'd3': { format: 'cjs' }
+    'd3': { format: 'cjs' },
+    'moment': { format: 'cjs' }
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
