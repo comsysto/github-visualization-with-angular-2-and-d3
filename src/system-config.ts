@@ -10,14 +10,14 @@
 /** Map relative paths to URLs. */
 const map: any = {
     'rxjs': 'vendor/rxjs',
-    'd3': 'vendor/d3/build'
+    'd3': 'vendor/d3/build/d3.js'
 };
 
 
 /** User packages configuration. */
 const packages: any = {
     'rxjs': { main: 'Rx' },
-    'd3': { main: 'd3' }
+    'd3': { format: 'cjs' }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
