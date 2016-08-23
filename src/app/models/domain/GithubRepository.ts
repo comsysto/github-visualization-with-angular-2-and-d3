@@ -21,4 +21,6 @@ export class GithubRepository {
     network_count:number;
     subscribers_count:number;
     forks_url:string;
+    contributors_url:string;
+    languages_url:string;
 }

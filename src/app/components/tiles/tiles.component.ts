@@ -6,6 +6,8 @@ import { DataService } from '../../services/data.service';
 import { TilesService } from './tiles.service';
 import { GithubRepository } from '../../models/domain/GithubRepository';
 import { GithubCodeFrequencyWeek } from '../../models/domain/GithubCodeFrquencyWeek';
+import { GithubUser } from '../../models/domain/GithubUser';
+import { GithubLanguage } from '../../models/domain/GithubLanguage';
 
 @Component({
     moduleId: module.id,
@@ -28,6 +30,14 @@ export class TilesComponent {
 
     public getGithubCodeFrequencyWeeks(): GithubCodeFrequencyWeek[] {
         return this.tilesService.getGithubCodeFrequencyWeeks();
+    }
+
+    public getGithubContributors(): GithubUser[] {
+        return this.tilesService.getGithubContributors();
+    }
+
+    public getGithubLanguages(): GithubLanguage[] {
+        return this.tilesService.getGithubLanguages();
     }
 
     getContributorsData(): GithubNumberData {

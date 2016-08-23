@@ -3,20 +3,21 @@ import { GithubService } from '../../services/github.service';
 import { DataService } from '../../services/data.service';
 import { GithubRepository } from '../../models/domain/GithubRepository';
 import { GithubCodeFrequencyWeek } from '../../models/domain/GithubCodeFrquencyWeek';
+import { GithubUser } from '../../models/domain/GithubUser';
+import { GithubLanguage } from '../../models/domain/GithubLanguage';
 
 @Injectable()
 export class TilesService {
     repo: GithubRepository;
     isDevMode: boolean = true;
     githubRepoUrlBase: string = 'https://api.github.com/repos/';
-    githubRepoUrlFull: string = '';
+    githubRepoUrlFull: string;
 
     constructor(private githubService: GithubService,
                 private dataService: DataService) {
         if (this.isDevMode) {
             this.getNewGithubRepository('');
         }
-
     }
 
     public getNewGithubRepository(repositoryName: string) {
@@ -31,8 +32,10 @@ export class TilesService {
             () => {
             },
             () => {
-                this.updateForks(this.repo.forks_url);
+                this.updateForks();
                 this.updateCodeFrequency();
+                this.updateContributors();
+                this.updateLanguages();
             }
         );
     }
@@ -49,8 +52,16 @@ export class TilesService {
         return this.dataService.getGithubCodeFrequency().weeks;
     }
 
-    private updateForks(forksUrl: string) {
-        let url = this.isDevMode ? 'app/mocks/forks.json' : forksUrl + '?sort=stargazers';
+    public getGithubContributors(): GithubUser[] {
+        return this.dataService.getGithubContributors();
+    }
+
+    public getGithubLanguages(): GithubLanguage[] {
+        return this.dataService.getGithubLanguages();
+    }
+
+    private updateForks() {
+        let url = this.isDevMode ? 'app/mocks/forks.json' : this.repo.forks_url + '?sort=stargazers';
 
         this.githubService.getGithubData(url).subscribe(
             (r: GithubRepository[]) => {
@@ -60,11 +71,31 @@ export class TilesService {
     }
 
     private updateCodeFrequency() {
-        let url = this.isDevMode ? 'app/mocks/code_frequency.json' : this.githubRepoUrlFull + '/code_frequency';
+        let url = this.isDevMode ? 'app/mocks/code_frequency.json' : this.githubRepoUrlFull + '/stats/code_frequency';
 
         this.githubService.getGithubData(url).subscribe(
             (r: any[][]) => {
                 this.dataService.setGithubCodeFrequency(r);
+            }
+        );
+    }
+
+    private updateContributors() {
+        let url = this.isDevMode ? 'app/mocks/contributors.json' : this.repo.contributors_url;
+
+        this.githubService.getGithubData(url).subscribe(
+            (r: GithubUser[]) => {
+                this.dataService.setGithubContributors(r);
+            }
+        );
+    }
+
+    private updateLanguages() {
+        let url = this.isDevMode ? 'app/mocks/languages.json' : this.repo.languages_url;
+
+        this.githubService.getGithubData(url).subscribe(
+            (r: Object) => {
+                this.dataService.setGithubLanguages(r);
             }
         );
     }

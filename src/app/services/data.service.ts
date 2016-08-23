@@ -3,6 +3,8 @@ import { GithubData } from '../models/domain/GithubData';
 import * as moment from 'moment';
 import { GithubCodeFrequency } from '../models/domain/GithubCodeFrequency';
 import { GithubCodeFrequencyWeek } from '../models/domain/GithubCodeFrquencyWeek';
+import { GithubUser } from '../models/domain/GithubUser';
+import { GithubLanguage } from '../models/domain/GithubLanguage';
 
 export class DataService {
     private githubData: GithubData;
@@ -33,7 +35,7 @@ export class DataService {
     }
 
     public setGithubCodeFrequency(value: any[][]): void {
-        value.forEach((week, idx) => {
+        value.forEach((week) => {
             let weekDate = week[0],
                 additions = week[1],
                 deletions = week[2];
@@ -48,11 +50,33 @@ export class DataService {
         });
     }
 
+    public getGithubContributors(): GithubUser[] {
+        return this.githubData.contributors;
+    }
+
+    public setGithubContributors(value: GithubUser[]): void {
+        this.githubData.contributors = value;
+    }
+
+    public getGithubLanguages(): GithubLanguage[] {
+        return this.githubData.languages;
+    }
+
+    public setGithubLanguages(value:Object): void {
+        for (var language in value) {
+            this.githubData.languages.push(
+                new GithubLanguage(language, value[language])
+            );
+        }
+    }
+
     private resetGithubData() {
         this.githubData = new GithubData();
         this.githubData.repository = new GithubRepository();
         this.githubData.forks_sorted_by_stargazers = [];
         this.githubData.code_frequency = new GithubCodeFrequency();
         this.githubData.code_frequency.weeks = [];
+        this.githubData.contributors = [];
+        this.githubData.languages = [];
     }
 }

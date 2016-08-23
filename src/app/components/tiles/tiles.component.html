@@ -19,6 +19,16 @@
         Datum: {{ week.weekDate.format() }} - Additions: {{ week.additions }} - Deletions: {{ week.deletions }}
     </li>
 </ul>
+<ul>
+    <li *ngFor="let contributor of getGithubContributors()">
+        Contributor: {{ contributor.login }} - Contributions: {{ contributor.contributions }}
+    </li>
+</ul>
+<ul>
+    <li *ngFor="let language of getGithubLanguages()">
+        Language: {{ language.language }} - Lines of Code: {{ language.lines_of_code }}
+    </li>
+</ul>
 <!--<cs-number-tile [data]="getRepoAgeData()"></cs-number-tile>-->
 <!--<cs-number-tile [data]="getTotalCommitsData()"></cs-number-tile>-->
 
