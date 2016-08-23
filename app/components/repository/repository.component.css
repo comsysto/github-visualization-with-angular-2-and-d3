@@ -1,8 +1,80 @@
-h1 {
+/* repository inout bar */
+
+.top-bar {
+    background: #00838F;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+.btn {
+    border: none;
+    font-size: 16px;
+}
+
+
+.label-primary {
+    background: #00ACC1;
+    padding: 0.4em 1.1em .3em;
+    border-radius: 0;
+}
+
+input {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.5); opacity: 1 !important; }
+:-moz-placeholder { color: rgba(255, 255, 255, 0.5);}
+::-moz-placeholder {color: rgba(255, 255, 255, 0.5);}
+:-ms-input-placeholder {color: rgba(255, 255, 255, 0.5);}
+
+/* instructions */
+.instructions {
     text-align: center;
 }
+
+.instructions i {
+    font-size: 3em;
+    color: #00ACC1;
+    animation: bounce 2s infinite;
+}
+
+/* basic repository info */
 
 img.media-object {
     height: 64px;
     width: 64px;
+}
+
+.media-body {
+    padding-left: 2em;
+}
+
+.media-heading {
+    font-family: 'Oswald', sans-serif;
+    color: #00ACC1;
+    text-transform: uppercase;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+    40% {
+    transform: translateY(-30px);
+  }
+    60% {
+    transform: translateY(-15px);
+  }
 }

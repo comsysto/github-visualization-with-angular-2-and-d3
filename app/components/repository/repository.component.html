@@ -1,27 +1,39 @@
-<div class="row">
-    <div class="col-sm-6 col-sm-offset-3 col-xs-12">
-        <h1>Visualize your Git repository</h1>
-        <div class="input-group">
-            <input #repoName type="text" class="form-control" placeholder="Repository name (e.g. 'twbs/bootstrap')">
-            <span class="input-group-btn">
-                <button (click)="onRepoNameChange(repoName.value)" class="btn btn-primary"
-                        type="button">Go!</button>
-            </span>
-        </div><!-- /input-group -->
-    </div>
+<div class="top-bar">
+  <div class="container">
+
+      <div class="row">
+          <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+              <div class="input-group">
+                  <input #repoName type="text" class="form-control" placeholder="Repository name (e.g. 'twbs/bootstrap')">
+                  <span class="input-group-btn">
+                  <button (click)="onRepoNameChange(repoName.value)" class="btn btn-default"
+                      type="button">Visualize!</button>
+                  </span>
+              </div><!-- /input-group -->
+          </div>
+      </div>
+  </div>
 </div>
 
-<div class="row">
-    <div class="col-md-8 col-md-offset-2 col-sm-12">
-        <!-- overview component -->
-        <div *ngIf="isDataPresent()" class="media">
-            <div class="media-left">
-                <img class="media-object" [src]="getIconUrl()" alt="icon"/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-12r">
+
+            <div class="instructions" *ngIf="!isDataPresent()">
+                <p><i class="material-icons">arrow_upward</i><br>
+                Enter a repository name and hit that 'Visualize!' button</p>
             </div>
-            <div class="media-body">
-                <h2 class="media-heading">{{ getName() }}</h2>
-                <p>{{ getDescription() }}</p>
-                <p>Language: <span class="label label-primary">{{ getLanguage() }}</span></p>
+
+            <div *ngIf="isDataPresent()" class="media">
+                <div class="media-left">
+                    <img class="media-object" [src]="getIconUrl()" alt="icon"/>
+                </div>
+                <div class="media-body">
+                    <h2 class="media-heading">{{ getName() }}</h2>
+                    <p>{{ getDescription() }}</p>
+                    <p>Main language: <span class="label label-primary">{{ getLanguage() }}</span></p>
+                </div>
             </div>
         </div>
     </div>
