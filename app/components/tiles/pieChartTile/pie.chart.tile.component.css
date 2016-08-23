@@ -1,0 +1,3 @@
+.tile {
+    width: calc(100% - 10px - 1px);
+}
