@@ -11,14 +11,18 @@
     </div>
 </div>
 
-<!-- overview component -->
-<div *ngIf="isDataPresent()" class="media">
-    <div class="media-left">
-        <img class="media-object" [src]="getIconUrl()" alt="icon" />
-    </div>
-    <div class="media-body">
-        <h2 class="media-heading">{{ getName() }}</h2>
-        <p>{{ getDescription() }}</p>
-        <p>Language: <span class="label label-primary">{{ getLanguage() }}</span></p>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 col-sm-12">
+        <!-- overview component -->
+        <div *ngIf="isDataPresent()" class="media">
+            <div class="media-left">
+                <img class="media-object" [src]="getIconUrl()" alt="icon"/>
+            </div>
+            <div class="media-body">
+                <h2 class="media-heading">{{ getName() }}</h2>
+                <p>{{ getDescription() }}</p>
+                <p>Language: <span class="label label-primary">{{ getLanguage() }}</span></p>
+            </div>
+        </div>
     </div>
 </div>
