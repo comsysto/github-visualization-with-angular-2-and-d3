@@ -2,5 +2,15 @@
 <button (click)="onRepoNameChange(repoName.value)" type="submit">GET REPO!</button>
 
 <cs-number-tile [data]="getContributorsData()"></cs-number-tile>
+<ul>
+    <li *ngFor="let fork of getGithubForks()">
+        Name: {{ fork.name }} - Stargazers: {{ fork.stargazers_count }}
+    </li>
+</ul>
+<ul>
+    <li *ngFor="let week of getGithubCodeFrequencyWeeks()">
+        Datum: {{ week.weekDate.format() }} - Additions: {{ week.additions }} - Deletions: {{ week.deletions }}
+    </li>
+</ul>
 <!--<cs-number-tile [data]="getRepoAgeData()"></cs-number-tile>-->
 <!--<cs-number-tile [data]="getTotalCommitsData()"></cs-number-tile>-->

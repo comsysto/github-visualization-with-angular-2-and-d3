@@ -8,12 +8,8 @@ export class GithubService {
     constructor(private http: Http) {
     }
 
-    private githubRepoUrlBase = 'https://api.github.com/repos/';
-
-    public getRepo(repoName: string) {
-        let repoUrl = this.githubRepoUrlBase + repoName;
-
-        return this.http.get(repoUrl)
+    public getGithubData(dataUrl:string) {
+        return this.http.get(dataUrl)
             .map(this.extractData)
             .catch(this.handleError);
     }

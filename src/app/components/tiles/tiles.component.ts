@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GithubNumberData } from '../../models/GithubTileData';
 import { GithubNumberType } from '../../models/GithubNumberType';
 import { GithubService } from '../../services/github.service';
 import { DataService } from '../../services/data.service';
 import { TilesService } from './tiles.service';
+import { GithubRepository } from '../../models/domain/GithubRepository';
+import { GithubCodeFrequencyWeek } from '../../models/domain/GithubCodeFrquencyWeek';
 
 @Component({
     moduleId: module.id,
@@ -18,6 +20,14 @@ export class TilesComponent {
     onRepoNameChange(repoName:string) {
         console.log('onRepoNameChange', repoName);
         this.tilesService.getNewGithubRepository(repoName);
+    }
+
+    getGithubForks():GithubRepository[] {
+        return this.tilesService.getGithubForks().slice(0,3);
+    }
+
+    public getGithubCodeFrequencyWeeks(): GithubCodeFrequencyWeek[] {
+        return this.tilesService.getGithubCodeFrequencyWeeks();
     }
 
     getContributorsData(): GithubNumberData {
