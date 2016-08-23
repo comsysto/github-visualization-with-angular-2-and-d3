@@ -7,10 +7,4 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
-  @Input()
-  title:number;
-
-  constructor() {
-    this.title = 5;
-  }
 }

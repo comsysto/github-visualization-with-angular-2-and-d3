@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GithubNumberData } from '../../models/GithubTileData';
+import { GithubNumberData } from '../../models/GithubNumberData';
 import { GithubNumberType } from '../../models/GithubNumberType';
 import { GithubService } from '../../services/github.service';
 import { DataService } from '../../services/data.service';
@@ -13,15 +13,15 @@ import { GithubLanguage } from '../../models/domain/GithubLanguage';
     moduleId: module.id,
     selector: 'cs-tiles',
     providers: [TilesService],
-    templateUrl: 'tiles.component.html'
+    templateUrl: 'tiles.component.html',
+    styleUrls: ['tiles.component.css']
 })
 export class TilesComponent {
     constructor(private tilesService:TilesService) {
     }
 
-    onRepoNameChange(repoName:string) {
-        console.log('onRepoNameChange', repoName);
-        this.tilesService.getNewGithubRepository(repoName);
+    isDataPresent():boolean {
+        return this.tilesService.isDataPresent();
     }
 
     getGithubForks():GithubRepository[] {
@@ -40,15 +40,15 @@ export class TilesComponent {
         return this.tilesService.getGithubLanguages();
     }
 
-    getContributorsData(): GithubNumberData {
-        return new GithubNumberData('Contributors', GithubNumberType.CONTRIBUTORS);
+    getWatchersData(): GithubNumberData {
+        return this.tilesService.getNumberData(GithubNumberType.WATCHERS);
     }
 
-    getTotalCommitsData(): GithubNumberData {
-        return new GithubNumberData('Total Commits', GithubNumberType.TOTAL_COMMITS);
+    getStarGazersData(): GithubNumberData {
+        return this.tilesService.getNumberData(GithubNumberType.STAR_GAZERS);
     }
 
-    getRepoAgeData(): GithubNumberData {
-        return new GithubNumberData('Repo Age', GithubNumberType.REPO_AGE);
+    getForksData(): GithubNumberData {
+        return this.tilesService.getNumberData(GithubNumberType.FORKS);
     }
 }

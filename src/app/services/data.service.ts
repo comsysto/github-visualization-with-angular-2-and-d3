@@ -8,18 +8,24 @@ import { GithubLanguage } from '../models/domain/GithubLanguage';
 
 export class DataService {
     private githubData: GithubData;
+    private dataPresent: boolean;
 
     constructor() {
         this.resetGithubData();
     }
 
-    public getGithubRepo(): GithubRepository {
+    public isDataPresent(): boolean {
+        return this.dataPresent;
+    }
+
+    public getGithubRepository(): GithubRepository {
         return this.githubData.repository;
     }
 
     public setGithubRepo(value: GithubRepository) {
         this.resetGithubData();
         this.githubData.repository = value;
+        this.dataPresent = true;
     }
 
     public getGithubForks(): GithubRepository[] {
@@ -62,7 +68,7 @@ export class DataService {
         return this.githubData.languages;
     }
 
-    public setGithubLanguages(value:Object): void {
+    public setGithubLanguages(value: Object): void {
         for (var language in value) {
             this.githubData.languages.push(
                 new GithubLanguage(language, value[language])
@@ -70,7 +76,20 @@ export class DataService {
         }
     }
 
+    public getWatchersCount():number {
+        return this.getGithubRepository().subscribers_count;
+    }
+
+    public getStarGazersCount():number {
+        return this.getGithubRepository().stargazers_count;
+    }
+
+    public getForksCount():number {
+        return this.getGithubRepository().forks_count;
+    }
+
     private resetGithubData() {
+        this.dataPresent = false;
         this.githubData = new GithubData();
         this.githubData.repository = new GithubRepository();
         this.githubData.forks_sorted_by_stargazers = [];

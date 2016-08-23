@@ -4,21 +4,22 @@ import { AppComponent } from './components/app.component';
 import { NumberTileComponent } from './components/tiles/numberTile/number.tile.component';
 import { GithubService } from './services/github.service';
 import { TilesComponent } from './components/tiles/tiles.component';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { DataService } from './services/data.service';
-import {ChartTileComponent} from "./components/tiles/chartTile/chart.tile.component";
+import { PieChartTileComponent } from './components/tiles/pieChartTile/pie.chart.tile.component';
+import { RepositoryComponent } from './components/repository/repository.component';
 
 @NgModule({
     imports: [
         BrowserModule,
-        HttpModule,
-        JsonpModule
+        HttpModule
     ],
     declarations: [
         AppComponent,
+        RepositoryComponent,
         TilesComponent,
         NumberTileComponent,
-        ChartTileComponent
+        PieChartTileComponent
     ],
     providers: [
         GithubService,

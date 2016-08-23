@@ -5,9 +5,10 @@ import * as d3 from 'd3';
 @Component({
     moduleId: module.id,
     selector: 'cs-chart-tile',
-    templateUrl: 'chart.tile.component.html'
+    templateUrl: 'pie.chart.tile.component.html',
+    styleUrls: ['pie.chart.tile.component.css']
 })
-export class ChartTileComponent extends AfterViewChecked {
+export class PieChartTileComponent extends AfterViewChecked {
 
 
     id: string;
