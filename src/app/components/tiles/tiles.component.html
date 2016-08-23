@@ -1,4 +1,11 @@
-<input #repoName />
+<div class="tile-container">
+    <cs-number-tile class="tile" [data]="getContributorsData()"></cs-number-tile>
+    <cs-number-tile class="tile" [data]="getRepoAgeData()"></cs-number-tile>
+    <cs-number-tile class="tile" [data]="getTotalCommitsData()"></cs-number-tile>
+    <cs-chart-tile class="tile"></cs-chart-tile>
+</div>
+
+<input #repoName/>
 <button (click)="onRepoNameChange(repoName.value)" type="submit">GET REPO!</button>
 
 <cs-number-tile [data]="getContributorsData()"></cs-number-tile>
@@ -14,3 +21,4 @@
 </ul>
 <!--<cs-number-tile [data]="getRepoAgeData()"></cs-number-tile>-->
 <!--<cs-number-tile [data]="getTotalCommitsData()"></cs-number-tile>-->
+

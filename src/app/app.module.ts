@@ -6,6 +6,7 @@ import { GithubService } from './services/github.service';
 import { TilesComponent } from './components/tiles/tiles.component';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { DataService } from './services/data.service';
+import {ChartTileComponent} from "./components/tiles/chartTile/chart.tile.component";
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { DataService } from './services/data.service';
     declarations: [
         AppComponent,
         TilesComponent,
-        NumberTileComponent
+        NumberTileComponent,
+        ChartTileComponent
     ],
     providers: [
         GithubService,
