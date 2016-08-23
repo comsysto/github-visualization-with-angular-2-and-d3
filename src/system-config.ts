@@ -10,7 +10,7 @@
 /** Map relative paths to URLs. */
 const map: any = {
     'rxjs': 'vendor/rxjs',
-    'd3': 'vendor/d3/build/d3.js',
+    'd3': 'vendor/d3/d3.js',
     'moment': 'vendor/moment/moment.js'
 };
 

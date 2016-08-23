@@ -1,6 +1,6 @@
 <div *ngIf="isDataPresent()" class="tile-container">
-    <cs-number-tile class="tile" [data]="getWatchersData()"></cs-number-tile>
-    <cs-number-tile class="tile" [data]="getStarGazersData()"></cs-number-tile>
-    <cs-number-tile class="tile" [data]="getForksData()"></cs-number-tile>
-    <!--<cs-chart-tile></cs-chart-tile>-->
+    <cs-number-tile [data]="getWatchersData()"></cs-number-tile>
+    <cs-number-tile [data]="getStarGazersData()"></cs-number-tile>
+    <cs-number-tile [data]="getForksData()"></cs-number-tile>
+    <cs-pie-chart-tile [data]="getLanguagesData()"></cs-pie-chart-tile>
 </div>

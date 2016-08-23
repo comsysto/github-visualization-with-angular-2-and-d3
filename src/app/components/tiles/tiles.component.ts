@@ -8,6 +8,8 @@ import { GithubRepository } from '../../models/domain/GithubRepository';
 import { GithubCodeFrequencyWeek } from '../../models/domain/GithubCodeFrquencyWeek';
 import { GithubUser } from '../../models/domain/GithubUser';
 import { GithubLanguage } from '../../models/domain/GithubLanguage';
+import { GithubPieChartData } from '../../models/GithubPieChartData';
+import { GithubPieChartType } from '../../models/GithubPieChartType';
 
 @Component({
     moduleId: module.id,
@@ -50,5 +52,9 @@ export class TilesComponent {
 
     getForksData(): GithubNumberData {
         return this.tilesService.getNumberData(GithubNumberType.FORKS);
+    }
+
+    getLanguagesData(): GithubPieChartData {
+        return this.tilesService.getPieChartData(GithubPieChartType.LANGUAGES);
     }
 }

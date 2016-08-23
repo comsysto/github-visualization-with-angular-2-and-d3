@@ -24,7 +24,7 @@
     "@angular/router-deprecated": "2.0.0-rc.2",
     "@angular/upgrade": "2.0.0-rc.5",
     "core-js": "^2.4.0",
-    "d3": "^4.2.2",
+    "d3": "^3.5.17",
     "es6-shim": "0.35.1",
     "moment": "^2.14.1",
     "reflect-metadata": "^0.1.3",

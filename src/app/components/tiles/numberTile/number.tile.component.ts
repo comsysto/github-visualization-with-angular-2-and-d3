@@ -1,9 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { GithubService } from '../../../services/github.service';
 import { GithubNumberData } from '../../../models/GithubNumberData';
-import { GithubRepository } from '../../../models/domain/GithubRepository';
-import { OnInit } from '@angular/core';
-import { DataService } from '../../../services/data.service';
 import { TilesService } from '../tiles.service';
 
 @Component({

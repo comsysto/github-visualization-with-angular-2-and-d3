@@ -7,6 +7,9 @@ import { GithubUser } from '../../models/domain/GithubUser';
 import { GithubLanguage } from '../../models/domain/GithubLanguage';
 import { GithubNumberData } from '../../models/GithubNumberData';
 import { GithubNumberType } from '../../models/GithubNumberType';
+import { GithubPieChartType } from '../../models/GithubPieChartType';
+import { GithubPieChartData } from '../../models/GithubPieChartData';
+import { GithubPieChartDataEntry } from '../../models/GithubPieChartDataSet';
 
 @Injectable()
 export class TilesService {
@@ -46,6 +49,20 @@ export class TilesService {
                 return new GithubNumberData('Star Gazers', type, this.dataService.getStarGazersCount());
             case GithubNumberType.FORKS:
                 return new GithubNumberData('Forks', type, this.dataService.getForksCount());
+        }
+    }
+
+    getPieChartData(type:GithubPieChartType): GithubPieChartData {
+        switch (type) {
+            case GithubPieChartType.LANGUAGES:
+                let languages:GithubLanguage[] = this.dataService.getGithubLanguages(),
+                    dataSet:GithubPieChartDataEntry[] = [];
+
+                languages.forEach((language:GithubLanguage) => {
+                    dataSet.push(new GithubPieChartDataEntry(language.language, language.lines_of_code));
+                });
+
+                return new GithubPieChartData(type, dataSet);
         }
     }
 }

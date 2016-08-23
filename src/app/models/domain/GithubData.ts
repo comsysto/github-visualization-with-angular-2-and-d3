@@ -5,8 +5,8 @@ import { GithubLanguage } from './GithubLanguage';
 
 export class GithubData {
     repository: GithubRepository;
-    forks_sorted_by_stargazers:GithubRepository[];
-    code_frequency:GithubCodeFrequency;
-    contributors:GithubUser[];
-    languages:GithubLanguage[];
+    forks_sorted_by_stargazers: GithubRepository[];
+    code_frequency: GithubCodeFrequency;
+    contributors: GithubUser[];
+    languages: GithubLanguage[];
 }
