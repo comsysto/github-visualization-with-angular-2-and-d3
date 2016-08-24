@@ -31,17 +31,17 @@ export class PieChartTileComponent extends AfterViewChecked {
 
         var w = 200;
         var h = 200;
-        var r = h/2;
-        var color = d3.scale.category20c();
+        var padding = 20;
+        var r = w/2 - 2*padding;
         var colors = ["#B2EBF2", "#4DD0E1", "#00BCD4", "#0097A7"];
 
         var vis = d3.select('#' + this.id)
         .append("svg:svg")
         .data([dataSet])
-        .attr("viewBox", '0 0 ' + w + ' ' + h)
+        .attr("viewBox", '0 0 ' + (w-2*padding) + ' ' + (h-2*padding))
         .attr("preserveAspectRatio", "none")
         .append("svg:g")
-        .attr("transform", "translate(" + r + "," + r + ")");
+        .attr("transform", "translate(" + (padding + r) + "," + (r + padding) + ")");
         var pie = d3.layout.pie().value(function(d:any){return d.count;});
 
         var arc = d3.svg.arc().outerRadius(r);
@@ -53,12 +53,14 @@ export class PieChartTileComponent extends AfterViewChecked {
                 return arc(d);
             });
 
-        arcs.append("svg:text").attr("transform", function(d:any){
-            d.innerRadius = 0;
-            d.outerRadius = r;
-            return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
+        arcs.append("svg:text")
+        .attr("transform", function(d:any){
+            d.innerRadius = r + 15;
+            return "translate(" + arc.centroid(d) + ")";})
+        .attr("text-anchor", "middle").text( function(d, i) {
             return dataSet[i].label;}
-        );
+        )
+        .style("font-size", "10px")
 
     }
 

@@ -2,5 +2,5 @@
 <div class="contributor" *ngFor="let contributor of data">
     <img [src]="contributor.avatar_url" [alt]="contributor.login">
     <p>{{ contributor.login }}</p>
-    <div class="tile-number">{{ contributor.contributions }}</div>
+    <div class="tile-number">{{ contributor.contributions | number:'.0-5' }}</div>
 </div>
