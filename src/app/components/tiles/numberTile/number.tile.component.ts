@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 import { GithubNumberData } from '../../../models/GithubNumberData';
 import { TilesService } from '../tiles.service';
 
@@ -9,6 +9,7 @@ import { TilesService } from '../tiles.service';
     styleUrls: ['number.tile.component.css']
 })
 export class NumberTileComponent {
+    @HostBinding('class.tile') tile = true;
     @Input() data: GithubNumberData;
 
     constructor(private tilesService:TilesService) {

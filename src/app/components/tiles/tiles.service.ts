@@ -65,4 +65,8 @@ export class TilesService {
                 return new GithubPieChartData(type, dataSet);
         }
     }
+
+    getMostValuableContributors(): GithubUser[] {
+        return this.dataService.getGithubContributors().slice(0, 3);
+    }
 }

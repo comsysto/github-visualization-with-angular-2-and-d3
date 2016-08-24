@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, Input } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, Input, HostBinding } from '@angular/core';
 import { TilesService } from '../tiles.service';
 import * as d3 from 'd3';
 import { GithubPieChartData } from '../../../models/GithubPieChartData';
@@ -10,12 +10,13 @@ import { GithubPieChartData } from '../../../models/GithubPieChartData';
     styleUrls: ['pie.chart.tile.component.css']
 })
 export class PieChartTileComponent extends AfterViewChecked {
+    @HostBinding('class.tile') tile = true;
     @Input() data:GithubPieChartData;
     id: string;
 
     constructor(private tilesService:TilesService) {
         super();
-        this.id = Math.random().toString(36).substr(2, 5);
+        this.id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);
     }
 
     ngAfterViewChecked():void {

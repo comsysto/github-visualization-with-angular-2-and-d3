@@ -61,9 +61,6 @@ export class RepositoryService {
 
         this.githubService.getGithubData(url).subscribe(
             (r: any[][]) => {
-                console.log('code frequency url', url);
-                console.log('code frequency url repo', this.repository);
-                console.log('code frequency url response', r);
                 this.dataService.setGithubCodeFrequency(r);
             }
         );

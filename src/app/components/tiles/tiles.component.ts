@@ -57,4 +57,8 @@ export class TilesComponent {
     getLanguagesData(): GithubPieChartData {
         return this.tilesService.getPieChartData(GithubPieChartType.LANGUAGES);
     }
+
+    getMostValuableContributors(): GithubUser[] {
+        return this.tilesService.getMostValuableContributors();
+    }
 }

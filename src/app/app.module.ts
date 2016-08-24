@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { DataService } from './services/data.service';
 import { PieChartTileComponent } from './components/tiles/pieChartTile/pie.chart.tile.component';
 import { RepositoryComponent } from './components/repository/repository.component';
+import { MostValuableContributorsTileComponent } from './components/tiles/mostValuableContributorsTile/most.valuable.contributors.tile.component';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { RepositoryComponent } from './components/repository/repository.componen
         RepositoryComponent,
         TilesComponent,
         NumberTileComponent,
-        PieChartTileComponent
+        PieChartTileComponent,
+        MostValuableContributorsTileComponent
     ],
     providers: [
         GithubService,
