@@ -10,6 +10,11 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    transition: background .3s;
+}
+
+:host(.error) .top-bar {
+    background: #B71C1C;
 }
 
 .btn {
@@ -72,9 +77,9 @@ img.media-object {
     transform: translateY(0);
   }
     40% {
-    transform: translateY(-30px);
+    transform: translateY(-20px);
   }
     60% {
-    transform: translateY(-15px);
+    transform: translateY(-10px);
   }
 }
