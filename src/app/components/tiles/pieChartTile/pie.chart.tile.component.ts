@@ -29,21 +29,26 @@ export class PieChartTileComponent extends AfterViewChecked {
         let dataSet:any = this.data.dataSet;
         if (!dataSet) return;
 
-        var w = 400;
-        var h = 400;
+        var w = 200;
+        var h = 200;
         var r = h/2;
-        var color = d3.scale.category20();
+        var color = d3.scale.category20c();
+        var colors = ["#B2EBF2", "#4DD0E1", "#00BCD4", "#0097A7"];
 
-        var vis = d3.select('#' + this.id).append("svg:svg").data([dataSet]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
+        var vis = d3.select('#' + this.id)
+        .append("svg:svg")
+        .data([dataSet])
+        .attr("viewBox", '0 0 ' + w + ' ' + h)
+        .attr("preserveAspectRatio", "none")
+        .append("svg:g")
+        .attr("transform", "translate(" + r + "," + r + ")");
         var pie = d3.layout.pie().value(function(d:any){return d.count;});
 
         var arc = d3.svg.arc().outerRadius(r);
 
         var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
         arcs.append("svg:path")
-            .attr("fill", function(d, i:any){
-                return color(i);
-            })
+            .attr("fill", function(d, i) {return colors[i];})
             .attr("d", function (d:any) {
                 return arc(d);
             });

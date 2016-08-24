@@ -30,44 +30,51 @@ export class BarChartTileComponent extends AfterViewChecked {
         let dataSet: GithubBarChartDataEntry[] = this.data.dataSet;
         if (!dataSet) return;
 
-        var container = document.querySelector('#' + this.id);
-        var w = container.clientWidth;
-        var h = 400;
-        var barPadding = 1;
+        var w = 400;
+        var h = 100;
 
         var maxAdditions = -1;
-        dataSet.forEach((d) => {
-            if (d.count > maxAdditions) maxAdditions = d.count
-        });
+        dataSet.forEach((d) => { if (d.additions > maxAdditions) maxAdditions = d.additions });
+        // note that deletions are negative values
+        var maxDeletions = 1;
+        dataSet.forEach((d) => { if (d.deletions < maxDeletions) maxDeletions = d.deletions });
 
+        var scaleAdditions = d3.scale.linear()
+        .domain([0, maxAdditions]).range([0, 100]);
 
-        var scale = d3.scale.linear()
-            .domain([0, maxAdditions])
-            .range([0, 100]);
+        var scaleDeletions = d3.scale.linear()
+        .domain([0, maxDeletions]).range([0, 100]); // maxDeletions is mapped tp 100
 
-// create the drawing area
-        var svg = d3.select("#" + this.id)
-            .append("svg")
-            .attr('viewBox', '0 0 ' + w + ' ' + h)
-            .attr("width", '100%')
-            .attr("height", '100%');
+        // create the drawing area
+        var svg = d3.select('#' + this.id)
+        .append("svg")
+        .attr("viewBox", '0 0 ' + w + ' ' + h)
+        .attr("preserveAspectRatio", "none");
 
-// draw the chart
-        svg.selectAll("rect")
-            .data(dataSet)
-            .enter()
-            .append("rect")
-            .attr("x", function (d, i) {
-                return i * (w / dataSet.length)
-            })
-            .attr("y", function (d) {
-                return h / 2 - scale(d.count)
-            })
-            .attr("width", w / dataSet.length - barPadding)
-            .attr("height", function (d) {
-                return scale(d.count);
-            })
-            .attr("fill", "teal");
+        var additionsGroup = svg.append("svg:g")
+        .attr("fill", "#00ACC1");
+
+        var deletionsGroup = svg.append("svg:g")
+        .attr("fill", "#B71C1C");
+
+        // draw the chart
+        additionsGroup.selectAll("rect")
+        .data(dataSet)
+        .enter()
+        .append("rect")
+        .attr("x", function(d, i) {return i * (w / dataSet.length)})
+        .attr("y", function(d) { return h/2 - scaleAdditions(d.additions) })
+        .attr("width", w / dataSet.length)
+        .attr("height", function(d) {return scaleAdditions(d.additions); });
+
+        deletionsGroup.selectAll("rect")
+        .data(dataSet)
+        .enter()
+        .append("rect")
+        .attr("x", function(d, i) {return i * (w / dataSet.length)})
+        .attr("y", function(d) { return h/2 })
+        .attr("width", w / dataSet.length)
+        .attr("height", function(d) {return scaleDeletions(d.deletions); });
+
     }
-
 }

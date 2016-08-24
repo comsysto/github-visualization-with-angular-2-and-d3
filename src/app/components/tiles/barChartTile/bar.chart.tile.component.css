@@ -1,7 +1,3 @@
 :host(.tile) {
     width: calc(100% - 10px - 1px);
 }
-
-.chart-container {
-    height: 400px;
-}

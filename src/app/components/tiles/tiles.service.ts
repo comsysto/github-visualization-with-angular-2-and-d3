@@ -98,10 +98,10 @@ export class TilesService {
             case GithubBarChartType.ADDITIONS:
                 let codeFrequencyWeeks: GithubCodeFrequencyWeek[] = this.dataService.getGithubCodeFrequency().weeks;
 
-                title = 'History of additions';
+                title = 'additions / deletions';
 
                 codeFrequencyWeeks.forEach((week) => {
-                    dataSet.push(new GithubBarChartDataEntry(week.weekDate.format("WW/gg"), week.additions));
+                    dataSet.push(new GithubBarChartDataEntry(week.weekDate.format("WW/gg"), week.additions, week.deletions));
                 });
         }
 

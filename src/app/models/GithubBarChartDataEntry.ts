@@ -1,9 +1,11 @@
 export class GithubBarChartDataEntry {
     label: string;
-    count: number;
+    additions: number;
+    deletions: number;
 
-    constructor(label: string, count: number) {
+    constructor(label: string, additions: number, deletions: number) {
         this.label = label;
-        this.count = count;
+        this.additions = additions;
+        this.deletions = deletions;
     }
 }
