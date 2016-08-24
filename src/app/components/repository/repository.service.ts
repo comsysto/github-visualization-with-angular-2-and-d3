@@ -10,7 +10,7 @@ export class RepositoryService {
     public loadError: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
     repository: GithubRepository;
-    isDevMode: boolean = true;
+    isDevMode: boolean = false;
     githubRepoUrlBase: string = 'https://api.github.com/repos/';
     githubRepoUrlFull: string;
 
