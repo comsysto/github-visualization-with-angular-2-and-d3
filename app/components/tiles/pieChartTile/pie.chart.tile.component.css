@@ -1,4 +1,3 @@
 :host(.tile) {
-    width: calc(33% - 40px);
-    padding: 40px;
+    width: calc(100% - 10px - 1px);
 }

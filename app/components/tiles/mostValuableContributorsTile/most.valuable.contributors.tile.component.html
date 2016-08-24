@@ -1,6 +1,6 @@
-<h3 class="tile-title">Most valuable contributors</h3>
+<h2>Most valuable contributors</h2>
 <div class="contributor" *ngFor="let contributor of data">
     <img [src]="contributor.avatar_url" [alt]="contributor.login">
-    <p>{{ contributor.login }}</p>
+    <h3 class="tile-title">{{ contributor.login }}</h3>
     <div class="tile-number">{{ contributor.contributions }}</div>
 </div>
