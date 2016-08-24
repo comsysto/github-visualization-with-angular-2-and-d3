@@ -53,17 +53,38 @@ export class TilesService {
     }
 
     getPieChartData(type:GithubPieChartType): GithubPieChartData {
+        let dataSet:GithubPieChartDataEntry[] = [];
+
         switch (type) {
             case GithubPieChartType.LANGUAGES:
-                let languages:GithubLanguage[] = this.dataService.getGithubLanguages(),
-                    dataSet:GithubPieChartDataEntry[] = [];
+                let languages:GithubLanguage[] = this.dataService.getGithubLanguages();
 
                 languages.forEach((language:GithubLanguage) => {
                     dataSet.push(new GithubPieChartDataEntry(language.language, language.lines_of_code));
                 });
-
-                return new GithubPieChartData(type, dataSet);
         }
+
+        dataSet.sort((data1:GithubPieChartDataEntry, data2: GithubPieChartDataEntry) => {
+            return data2.count - data1.count;
+        });
+
+        let reducedDataSet = [],
+            otherDataEntry = new GithubPieChartDataEntry('Other', 0);
+
+        dataSet.forEach((dataEntry, idx) => {
+            console.log(dataEntry.label);
+            console.log(idx);
+
+            if (idx < 3) {
+                reducedDataSet.push(dataEntry);
+            }
+            else {
+                otherDataEntry.count += dataEntry.count;
+            }
+        });
+        reducedDataSet.push(otherDataEntry);
+
+        return new GithubPieChartData(type, reducedDataSet);
     }
 
     getMostValuableContributors(): GithubUser[] {

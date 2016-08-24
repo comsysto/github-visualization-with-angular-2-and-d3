@@ -42,9 +42,7 @@ export class PieChartTileComponent extends AfterViewChecked {
         var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
         arcs.append("svg:path")
             .attr("fill", function(d, i:any){
-                let b:any = i%2;
-                console.log(b);
-                return color(b);
+                return color(i);
             })
             .attr("d", function (d:any) {
                 return arc(d);
