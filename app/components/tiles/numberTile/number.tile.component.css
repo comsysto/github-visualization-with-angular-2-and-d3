@@ -1,15 +1,5 @@
 :host {
     flex:1 0 calc(33.33% - 40px);
-    align-self: stretch;
-    max-width: 100%;
-    box-shadow: 0px 3px 20px -1px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin: 20px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-
-    transition: .3s;
-    border-top: 5px solid white;
 }
 
 .tile-title {
@@ -18,14 +8,7 @@
 }
 
 .tile-number {
-    font-family: 'Oswald', sans-serif;
     font-size: 4em;
-    color: #00ACC1;
-    font-weight: 300;
 }
 
-:host:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 40px -1px rgba(0, 0, 0, 0.1);
-    border-top-color: #00ACC1;
-}
+
