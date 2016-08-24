@@ -9,6 +9,7 @@ import { DataService } from './services/data.service';
 import { PieChartTileComponent } from './components/tiles/pieChartTile/pie.chart.tile.component';
 import { RepositoryComponent } from './components/repository/repository.component';
 import { MostValuableContributorsTileComponent } from './components/tiles/mostValuableContributorsTile/most.valuable.contributors.tile.component';
+import { BarChartTileComponent } from './components/tiles/barChartTile/bar.chart.tile.component';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { MostValuableContributorsTileComponent } from './components/tiles/mostVa
         TilesComponent,
         NumberTileComponent,
         PieChartTileComponent,
+        BarChartTileComponent,
         MostValuableContributorsTileComponent
     ],
     providers: [

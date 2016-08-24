@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class GithubService {
+    private httpObservable:Observable<Response>;
+
     constructor(private http: Http) {
     }
 

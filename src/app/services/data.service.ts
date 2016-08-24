@@ -88,7 +88,7 @@ export class DataService {
         return this.getGithubRepository().forks_count;
     }
 
-    private resetGithubData() {
+    public resetGithubData() {
         this.dataPresent = false;
         this.githubData = new GithubData();
         this.githubData.repository = new GithubRepository();

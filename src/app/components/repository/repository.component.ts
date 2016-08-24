@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, OnChanges, OnInit } from '@angular/core';
 import { GithubRepository } from '../../models/domain/GithubRepository';
 import { RepositoryService } from './repository.service';
 
@@ -9,8 +9,15 @@ import { RepositoryService } from './repository.service';
     templateUrl: 'repository.component.html',
     styleUrls: ['repository.component.css']
 })
-export class RepositoryComponent {
-    constructor(private repositoryService: RepositoryService) {
+export class RepositoryComponent implements OnInit {
+    @HostBinding('class.error') loadError = false;
+
+    constructor(private repositoryService: RepositoryService) {}
+
+    ngOnInit() {
+        this.repositoryService.loadError.subscribe((value:boolean) => {
+            this.loadError = value;
+        });
     }
 
     isDataPresent():boolean {
@@ -19,6 +26,8 @@ export class RepositoryComponent {
 
     onRepoNameChange(repoName: string) {
         this.repositoryService.getNewGithubRepository(repoName);
+
+        return false;
     }
 
     getGithubRepository(): GithubRepository {

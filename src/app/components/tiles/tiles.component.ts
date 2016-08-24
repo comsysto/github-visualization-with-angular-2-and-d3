@@ -10,6 +10,8 @@ import { GithubUser } from '../../models/domain/GithubUser';
 import { GithubLanguage } from '../../models/domain/GithubLanguage';
 import { GithubPieChartData } from '../../models/GithubPieChartData';
 import { GithubPieChartType } from '../../models/GithubPieChartType';
+import { GithubBarChartData } from '../../models/GithubBarChartData';
+import { GithubBarChartType } from '../../models/GithubBarChartType';
 
 @Component({
     moduleId: module.id,
@@ -56,6 +58,10 @@ export class TilesComponent {
 
     getLanguagesData(): GithubPieChartData {
         return this.tilesService.getPieChartData(GithubPieChartType.LANGUAGES);
+    }
+
+    getAdditionsData(): GithubBarChartData {
+        return this.tilesService.getBarChartData(GithubBarChartType.ADDITIONS);
     }
 
     getMostValuableContributors(): GithubUser[] {

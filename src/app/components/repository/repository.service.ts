@@ -3,11 +3,14 @@ import { GithubService } from '../../services/github.service';
 import { DataService } from '../../services/data.service';
 import { GithubRepository } from '../../models/domain/GithubRepository';
 import { GithubUser } from '../../models/domain/GithubUser';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class RepositoryService {
+    public loadError: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
     repository: GithubRepository;
-    isDevMode: boolean = true;
+    isDevMode: boolean = false;
     githubRepoUrlBase: string = 'https://api.github.com/repos/';
     githubRepoUrlFull: string;
 
@@ -26,12 +29,16 @@ export class RepositoryService {
         this.githubRepoUrlFull = this.githubRepoUrlBase + repositoryName;
         let url = this.isDevMode ? 'app/mocks/repo.json' : this.githubRepoUrlFull;
 
+        this.dataService.resetGithubData();
+
         this.githubService.getGithubData(url).subscribe(
             (r: GithubRepository) => {
+                this.loadError.next(false);
                 this.repository = r;
                 this.dataService.setGithubRepo(r)
             },
             () => {
+                this.loadError.next(true);
             },
             () => {
                 this.updateForks();
