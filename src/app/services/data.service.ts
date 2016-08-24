@@ -2,7 +2,7 @@ import { GithubRepository } from '../models/domain/GithubRepository';
 import { GithubData } from '../models/domain/GithubData';
 import * as moment from 'moment';
 import { GithubCodeFrequency } from '../models/domain/GithubCodeFrequency';
-import { GithubCodeFrequencyWeek } from '../models/domain/GithubCodeFrquencyWeek';
+import { GithubCodeFrequencyWeek } from '../models/domain/GithubCodeFrequencyWeek';
 import { GithubUser } from '../models/domain/GithubUser';
 import { GithubLanguage } from '../models/domain/GithubLanguage';
 

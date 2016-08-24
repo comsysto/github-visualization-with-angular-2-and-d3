@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { GithubService } from '../../services/github.service';
 import { DataService } from '../../services/data.service';
 import { GithubRepository } from '../../models/domain/GithubRepository';
-import { GithubCodeFrequencyWeek } from '../../models/domain/GithubCodeFrquencyWeek';
+import { GithubCodeFrequencyWeek } from '../../models/domain/GithubCodeFrequencyWeek';
 import { GithubUser } from '../../models/domain/GithubUser';
 import { GithubLanguage } from '../../models/domain/GithubLanguage';
 import { GithubNumberData } from '../../models/GithubNumberData';
